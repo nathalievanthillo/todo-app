@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+*
+{
+  box-sizing: border-box;
+}
+
+body
+{
+  padding: 0;
+  margin: 0;
+  background-color: #ffff;
+}
+
+#app
+{
+  max-width: 500px;
+  margin: 8em auto;
+  background-color: #fff;
+  padding: 1em;
+  border-radius: 10px;
+}
+
+h1
+{
+  font-size: 1.2em;
+  text-align: center;
+}
+
+.error
+{
+  background-color: #EFEEF1;
+  border: 1px solid #E91C24;
+  border-radius: 5px;
+  border-left-width: 5px;
+  padding: 1em;
+}
+
+.nav--login
+{
+  padding: 0.3em;
+}
+
+
+.nav--login a
+{
+  color: #5D6CC6;
+  text-decoration: none;
+  margin-right: 1em;
+}
+
+.form
+{
+  padding: 0.5em;
+}
+
+
+
+
+.nav--login
+{
+  border-bottom: 2px solid #A291C4;
+  margin-bottom: 1em;
+}
+
+.nav
+{
+  background-color: #F7F8FD;
+  padding: 0.6em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 6em;
+}
+
+.nav a
+{
+  margin: 0 1em;
+  text-decoration: none;
+}
+
+a.loggedIn
+{
+  flex: 0 1 240px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  margin-left: 996px;
+}
+
+.user--avatar
+{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  grid-column: 1 / 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  margin-left: -14px;
+}
+
+.user--name
+{
+  margin: 0;
+  color: #4C5CC5;
+  font-style: italic;
+  margin-left: 20px;
+}
+
+.user--avatar img
+{
+  object-fit: cover;
+  object-position: center;
+  width: 50px;
+  margin-top: -6px;
+}
+
+.nav a
+{
+  color: #B4C4E7;
+  font-weight: 800;
+  font-style: italic;
+}
+
+.nav a:hover
+{
+  color: #fff;
+}
+
+.hidden
+{
+  display: none;
+}
+
+a {
+  color: #5D6CC6;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+span.user--status {
+    color: #4C5CC6;
+    font-weight: 400;
+    font-style: italic;
+    margin-left: 20px;
+}
+
+
+.list{
+    position: relative;
+    background: #fff;
+    width: 421px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-left: 34%;
+    justify-content: center;
+    margin-bottom: 100px;
+}
+
+.list h2{
+    background: #fff;
+    color: #4C5CC6;
+    padding-top: 35px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.list h3{
+    background: #F7F8FD;
+    color: #9EA3C6;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    font-weight: 600;
+    text-align: left;
+    font-size: 14px;
+}
+
+
+.list ul{
+    position: relative;
+    padding: 20px;
+}
+
+
+.list ul li{
+    position: relative;
+    list-style:none;
+    padding: 15px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.list ul li:last-child{
+    border-bottom:none;
+}
+
+.list ul li label{
+    justify-content: space-between;
+    cursor:pointer;
+    align-items:center;
+}
+
+
+.list ul li label input{
+    visibility: hidden;
+    appearance:none;
+}
+
+
+.list ul li label p{
+    position:absolute;
+    padding-left: 36px;
+    color: #4C5CC6;
+    font-weight: 600;
+}
+
+
+.list ul li label span{
+    position:relative;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background:#D3D7E4;
+}
+
+
+.list ul li label span:before{
+    content:'';
+    position: absolute;
+    top: 5px;
+    width: 10px;
+    height: 5px;
+    border-left: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+    transform: rotate(-40deg);
+}
+
+
+.list ul li label input:checked ~ p{
+    text-decoration: line-through;
+    color:#ccc;
+    font-style: italic;
+}
+
+
+.list ul li label input:checked ~ span{
+    border-color: #5C6BC6;
+    border: 1px solid #5C6BC6;
+}
+
+
+.list ul li label input:checked ~ span::before{
+    border-left: 2px solid #5C6BC6;
+    border-bottom: 2px solid #5C6BC6;
+}
+
+
+h4 {
+    text-align: right;
+    margin-right: 20px;
+    color: #9EA3C6;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: -31px;
+}
+
+.not-done {
+    margin-top: 30px;
+}
+
+.alert {
+    background-color: #EFEEF1;
+    border: 1px solid #E91C24;
+    border-radius: 5px;
+    border-left-width: 5px;
+    padding: 1em;
+}
