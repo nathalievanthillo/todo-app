@@ -10,6 +10,9 @@
         //user is not logged in
         header("location: login.php"); //je wordt teruggestuurd naar login.php
     }
+
+    
+
 ?><!DOCTYPE html>
 <html lang="en">
 <head>
