@@ -10,7 +10,7 @@ if(!empty($_POST)){
         session_start(); //onthouden dat de gebruiker is ingelogd
 
         $_SESSION["username"] = $username;
-
+        $_SESSION["userId"] = User::getUserIdByName($username);
 
         header("location: index.php");
 
