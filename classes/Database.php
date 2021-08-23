@@ -1,5 +1,4 @@
 <?php
-    //klasse database
     class Database {
         
         private static $conn; //static (eigenschap) en heeft geen instanties= maar 1 uitwerking hebt en bestaande vorm hiervan hebt geen oneindig veel
