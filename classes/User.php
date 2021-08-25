@@ -174,6 +174,54 @@
         }
 
 
+
+        public static function IsAdmin($userId){ //userId geef je mee met isAdmin
+            $conn = Database::getConnection();
+            $statement = $conn->prepare("SELECT id FROM users WHERE is_admin = 1 AND id = :userId"); 
+        
+            $statement->bindValue(":userId", $userId);
+
+            $result = $statement->execute();
+            $result = $statement->fetch(); 
+            
+            if(!empty($result)){
+                return true;
+
+            } else{
+
+                return false;
+            }
+        
+        }
+
+        
+        public static function getUsers($user){
+            $conn = Database::getConnection();
+            $statement = $conn->prepare("SELECT * FROM users");
+
+            $statement->bindValue(":id", $user->getUserId());
+            $statement->execute();
+            
+            $result = $statement->fetchAll(\PDO::FETCH_OBJ);
+            return $result;
+        }
+
+
+        public static function countUsers(){
+            $conn = Database::getConnection();
+            $statement = $conn->prepare("SELECT COUNT(*) FROM users");
+    
+            $statement->execute();
+
+            $result = $statement->fetch(\PDO::FETCH_COLUMN);
+           
+            return $result; //$return zitten de lijsten van de admins
+            
+        }
+
+
+
+
         private function checkUsername($username){
             if($username == ""){
                 throw new Exception("Username cannot be empty.");
@@ -205,6 +253,9 @@
                 throw new Exception("Email is invalid");
         }
     }
+
+    
+    
     
         public function save(){
             $conn = Database::getConnection();
@@ -222,6 +273,28 @@
 
             //return resultaat
             return $result;
+        }
+
+
+        public function saveAdmin(){
+            $conn = Database::getConnection();
+            $statement = $conn->prepare("INSERT INTO users (username, password, email, is_admin) VALUES (:username, :password, :email, 1)");
+        
+            $username = $this->getUsername();
+            $password = $this->getPassword();
+            $email = $this->getEmail();
+
+            
+            $statement->bindValue(":username", $username);
+            $statement->bindValue(":password", $password);
+            $statement->bindValue(":email", $email);
+
+
+            $result = $statement->execute();
+
+            //return resultaat
+            return $result;
+
         }
 
 
