@@ -45,7 +45,7 @@
       </div>
 
     <nav class="nav--login">
-        <a href="#" id="text">Sign in to continue</a>
+        <a href="#" id="text">Sign in to continue</a>  
     </nav>
   
 
