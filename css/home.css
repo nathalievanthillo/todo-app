@@ -138,8 +138,45 @@ h2{
     margin-left: 20px;
 }
 
-.test {
+.fullList {
+  margin-left: 41px;
+}
+
+.infoList {
   margin-top: 29px;
-  margin-left: 20px;
+  margin-left: 59px;
   color: black;
+  background-color: #F7F8FD;
+  width: 26%;
+  border: 2px;
+  border-style: dashed;
+  border-color: #4C5CC4;
+  border-radius: 11px;
+}
+
+
+.dataList {
+  padding: 20px;
+}
+
+.newList {
+  margin-left: 20px;
+  padding-top: 10px;
+  border: solid 2px;
+  width: 7%;
+  padding-bottom: 10px;
+  border-radius: 15px;
+  border-color: blue;
+}
+
+
+.newList a {
+  margin-left: 16px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+
+.AllList {
+  margin-top: 20px;
 }
