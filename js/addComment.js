@@ -1,3 +1,7 @@
+var commentBoxes = document.getElementsByClassName("commentBox");
+var comments = document.getElementsByClassName("comments");
+var inputFields = document.getElementsByClassName("commentBoxText"); //inputfields variable en commentBoxText is klasse naam
+
 function addComment(eventArgs){
     var taskId = eventArgs.path[0].dataset.taskid;
     var commentText = eventArgs.path[0].previousElementSibling.value;
@@ -14,9 +18,15 @@ function addComment(eventArgs){
         .then(response => response.json())
         .then(result => {
 
-            alert("comment geplaatst");
+            var comment = document.createElement('p'); //p tag
+            comment.innerHTML=commentText;
+
+            comments[eventArgs.path[0].dataset.counter].appendChild(comment);
+
+            inputFields[eventArgs.path[0].dataset.counter].value="";
             
-        })
+            
+        }) 
         .catch(error => {
             console.error("Error:", error);
         });
