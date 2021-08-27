@@ -69,11 +69,9 @@
       <div class="user--avatar"><img src="images/image-user.png" alt=""></div>
   
       <span class="user--status">Welcome</span>
-      <!--als er geset is uit de session vakje username-->
       <?php if(isset($_SESSION['username'])): ?> 
-      <!--doen we onderstaand blok gaan we de username vanuit de session printen-->
-      <h3 class="user--name"><?php echo $_SESSION['username']; ?></h3>
-      <?php else: ?> <!--als die sessie niet bestaat wordt username here afgeprint-->
+      <h3 class="user--name"><?php echo (htmlspecialchars($_SESSION['username'])); ?></h3>
+      <?php else: ?> 
       <h3 class="user--name">Username here</h3>
       <?php endif; ?>
 
@@ -107,7 +105,6 @@
 
 
     <?php if(isset($error)): ?>
-    <!--Bestaat er een variable met de naam error dan gaan we onderstaand blok uitvoeren & tonen we de foutmelding-->
     <div class="alert">
       <?php echo $error;?></div>
     <?php endif; ?>
