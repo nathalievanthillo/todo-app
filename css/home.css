@@ -14,8 +14,11 @@ body
 {
   padding: 0;
   margin: 0;
-  background-color: #ffff;
+  background-image: url(../images/begin.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
+
 
 .nav {
     background-color: #F7F8FD;
@@ -134,7 +137,7 @@ input.submitNewTask{
 
 h2{
     font-weight: bold;
-    color: #4C5CC4;
+    color: #fff;
     margin-left: 20px;
 }
 
@@ -155,8 +158,199 @@ h2{
 }
 
 
+
+
 .dataList {
-  padding: 20px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+
+
+
+.dataList h3 {
+  color: #4C5CC4;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-bottom: 9px;
+}
+
+
+.deleteList {
+  background-color: #4C5CC4;
+  border-radius: 6px;
+  margin-top: 9px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.navigationTask {
+  margin-left: 20px;
+}
+
+
+.navigationTask a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  margin-left: 59px;
+}
+
+.dataTask {
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+}
+
+.dataTask h3 {
+  color: #4C5CC4;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-bottom: 9px;
+  margin-top: 18px;
+}
+
+a.statusDone {
+  background: #4C5CC4;
+  padding: 8px;
+  border-radius: 10px;
+  margin-left: 19px;
+}
+
+.dataTask p {
+  text-decoration: none;
+  color: black;
+}
+
+
+.commentBox {
+  margin-left: 20px;
+  margin-bottom: 18px;
+}
+
+
+.headerAdmin {
+  margin-left: 77px;
+  margin-bottom: 27px;
+  margin-top: -44px;
+}
+
+
+.task {
+  margin-top: 29px;
+  margin-left: 59px;
+  color: black;
+  background-color: #F7F8FD;
+  width: 26%;
+  border: 2px;
+  border-style: dashed;
+  border-color: #4C5CC4;
+  border-radius: 11px;
+  padding-bottom: 26px;
+}
+
+a.buttonAdmin {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  background-color: #4C5CC4;
+  margin-right: 20px;
+  padding: 5px;
+  border-radius: 7px;
+}
+
+
+
+a.deleteButton {
+  background: red;
+  padding: 8px;
+  border-radius: 10px;
+  margin-left: 1px;
+}
+
+
+
+.userStats h3 {
+  margin-left: -40px;
+  color: #4C5CC4;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-bottom: 9px;
+}
+
+p.statsUser {
+  margin-left: -40px;
+}
+
+.navigationAddList a {
+  margin-left: 29px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding-bottom: 21px;
+}
+
+
+.navigationAddList {
+  margin-bottom: 16px;
+}
+
+.TitleAddList h2 {
+  font-weight: bold;
+  color: #fff;
+  margin-left: 28px;
+}
+
+
+.listStats h3 {
+  color: #4C5CC4;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding-bottom: 9px;
+  margin-top: 24px;
+}
+
+
+.navigationStatics {
+  margin-bottom: 14px;
+}
+
+
+
+.navigationStatics a {
+  margin-left: 61px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  padding-bottom: 21px;
+}
+
+
+
+.userStats {
+  margin-left: 41px;
+  margin-top: 24px;
+}
+
+.allStats {
+  margin-left: 41px;
+}
+
+
+
+.deleteList a {
+  color: #fff;
+  margin-left: 109px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
+.dataList p {
+  text-decoration: none;
+  color: black;
+
 }
 
 .newList {
@@ -166,7 +360,7 @@ h2{
   width: 7%;
   padding-bottom: 10px;
   border-radius: 15px;
-  border-color: blue;
+  border-color: #fff;
 }
 
 
@@ -174,9 +368,17 @@ h2{
   margin-left: 16px;
   font-weight: 500;
   text-decoration: none;
+  color: #fff;
 }
 
 
 .AllList {
   margin-top: 20px;
+}
+
+
+.comments p {
+  margin-left: 20px;
+  font-weight: 300;
+  font-style: italic;
 }
