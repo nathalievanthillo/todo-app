@@ -122,12 +122,32 @@ include_once(__DIR__ . "/Database.php");
         }
 
         
-              //CHECK IF TITLE IS NOT EMPTY
+              //CHECK IF TITLE IS NOT EMPTY & IF TITLE ALREADY HAS USED
               private function checkTitle($title){
                 if($title == ""){
                     throw new Exception("Title cannot be empty.");
                 }
+
+                if($this->titleExists($title)){
+                        throw new Exception("This title has already used.");
+                    }
              }
+
+
+             private function titleExists($title){ 
+                $conn = Database::getConnection();
+                $statement = $conn->prepare("SELECT id FROM tasks WHERE title = :title");
+    
+                $statement->bindValue(":title", $title);            
+                $statement->execute();
+                $result = $statement->fetch();
+    
+                if(!$result){
+                    return False;
+                } else {
+                    return True;
+                }
+            }
 
 
              public static function sortHours($hours){
@@ -193,17 +213,8 @@ include_once(__DIR__ . "/Database.php");
                 return $result;
             }
 
-        //delete deadline
-            public static function deleteDeadlineTask($userId, $taskId){
-                $conn = Database::getConnection();
-                $statement = $conn->prepare("DELETE deadline FROM tasks WHERE id = :taskId and user_id = :user");
 
-                $statement->bindValue(":user", $userId);
-                $statement->bindValue("taskId", $taskId);
-
-                $result = $statement->execute();
-                return $result;
-            }
+            
 
 
             public static function setTaskDone($userId, $taskId){
