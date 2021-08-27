@@ -1,6 +1,6 @@
 var commentBoxes = document.getElementsByClassName("commentBox");
 var comments = document.getElementsByClassName("comments");
-var inputFields = document.getElementsByClassName("commentBoxText"); //inputfields variable en commentBoxText is klasse naam
+var inputFields = document.getElementsByClassName("commentBoxText"); 
 
 function addComment(eventArgs){
     var taskId = eventArgs.path[0].dataset.taskid;
@@ -36,8 +36,8 @@ function addComment(eventArgs){
     
 }
 
-var commentBoxes = document.getElementsByClassName("commentBox");//zoeken naar alle divs met klasse commentBox 
+var commentBoxes = document.getElementsByClassName("commentBox");
 
 for(i=0; i<commentBoxes.length; i++){
-    commentBoxes[i].getElementsByClassName('commentBoxButton')[0].onclick = addComment; //binnen commentBox div zoeken naar de commentbox button
+    commentBoxes[i].getElementsByClassName('commentBoxButton')[0].onclick = addComment; 
 }
