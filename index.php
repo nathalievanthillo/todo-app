@@ -5,24 +5,23 @@ include_once(__DIR__ . '/classes/Task.php');
 include_once(__DIR__ . '/classes/TaskComment.php');
 include_once(__DIR__ . '/classes/User.php');
 
-    session_start(); //er wordt een link gelegd tussen session id en de data op de server
-
+    session_start(); 
 
 
   $AllListsForUser[] = NULL; //declareren van de variable
   $AllTasksForListsAndUser[] = NULL;
 
     //isset is = bestaat die variable
-    if(isset($_SESSION['username'])){   //kijkt of er iets gesset is of er in de session of er in de session een array bestaat met de naam username (naam van session)
+    if(isset($_SESSION['username'])){   
         //user is logged in
         //echo "Welcome " . $_SESSION['username'];
         //queries
 
 
 
-        if(!isset($_GET['listId'])){ //wanneer we niet in een lijst zitten alle lijsten opvragen
+        if(!isset($_GET['listId'])){ 
          
-            $AllListsForUser = Lists::getAllListsByUserId($_SESSION['userId']); //alle lijsten tonen van de ingelogde user
+            $AllListsForUser = Lists::getAllListsByUserId($_SESSION['userId']); 
           
 
           
@@ -35,14 +34,14 @@ include_once(__DIR__ . '/classes/User.php');
 
           }else{
 
-            $AllTasksForListsAndUser = Task::getAllTasksByUserAndListId($_SESSION['userId'], $_GET['listId']); //user uit session halen en de lijst uit de get (url)
+            $AllTasksForListsAndUser = Task::getAllTasksByUserAndListId($_SESSION['userId'], $_GET['listId']); 
           }
           }
 
 
     }else{
         //user is not logged in
-        header("location: login.php"); //je wordt teruggestuurd naar login.php
+        header("location: login.php"); 
     }
 
     
@@ -63,11 +62,9 @@ include_once(__DIR__ . '/classes/User.php');
       <div class="user--avatar"><img src="images/image-user.png" alt=""></div>
   
       <span class="user--status">Welcome</span>
-      <!--als er geset is uit de session vakje username-->
       <?php if(isset($_SESSION['username'])): ?> 
-      <!--doen we onderstaand blok gaan we de username vanuit de session printen-->
-      <h3 class="user--name"><?php echo $_SESSION['username']; ?></h3>
-      <?php else: ?> <!--als die sessie niet bestaat wordt username here afgeprint-->
+      <h3 class="user--name"><?php echo (htmlspecialchars($_SESSION['username'])); ?></h3>
+      <?php else: ?> 
       <h3 class="user--name">Username here</h3>
       <?php endif; ?>
 
@@ -78,17 +75,19 @@ include_once(__DIR__ . '/classes/User.php');
   </nav>    
 </header>
 
-<?php if(User::IsAdmin($_SESSION['userId'])): ?> <!---Dit ziet enkel de admin deze 2 buttons---->
-<a class="headerbutton" href="createAdmin.php">Create new admin</a>
+<?php if(User::IsAdmin($_SESSION['userId'])): ?> 
+<div class="headerAdmin">
+<a class="buttonAdmin" href="createAdmin.php">Create new admin</a>
 
-<a class="headerbutton" href="statistics.php">Statistics</a>
+<a class="buttonAdmin" href="statistics.php">Statistics</a>
+</div>
 
 <?php endif;?>
 
 
 
 <!---TAKEN VAN LIJST TONEN------------------------------------------------------------------->
-
+<div class="navigationTask">
 <?php if(isset($_GET['listId'])): ?> 
   <a href="upload.php?listId=<?php echo $_GET['listId'];?>">New Task</a>
   <a href="index.php">Go Back</a>
@@ -99,24 +98,34 @@ include_once(__DIR__ . '/classes/User.php');
   <?php $counter = 0;?>
   <?php foreach($AllTasksForListsAndUser as $Task){ ?> 
   <div class="task">
-      <h3><?php echo $Task->getTitle();?></h3>
-      <p><?php echo $Task->getHours();?></p>
-      <p><?php echo $Task->getDeadline();?></p>
-      
-      <a href="deleteDeadlineTask.php?taskId=<?php echo $Task->getDeadline();?>">DELETE DEADLINE</a>
-      <p class="status"><?php echo $Task->getStatus();?></p>
+    <div class="dataTask">
+      <h3><?php echo (htmlspecialchars($Task->getTitle()));?></h3>
+      <div class="hour">
+        <h4>Hours</h4>
+      <p><?php echo (htmlspecialchars($Task->getHours()));?></p>
+      </div>
 
+      <div class="deadline">
+        <h4>Deadline</h4>
+      <p><?php echo (htmlspecialchars($Task->getDeadline()));?></p>
+      </div>
+      
+      
+      <div class="statusTask">
+        <h4>Status</h4>
+      <p class="status"><?php echo $Task->getStatus();?></p>
+  </div>
+</div>
 
  
 
-      <p>------</p>
       
-      <!---ALLE COMMENTS VAN DE TAAK OVERLOPEN--->
+      <!---ALLE COMMENTS VAN DE TAAK OVERLOPEN--->’
       <div class="comments" data-taskid="<?php echo $Task->getTaskId() ?>" >
      
 
       <?php foreach(TaskComment::getAllTaskCommentsByTaskId($Task->getTaskId()) as $TaskComment){ ?>
-        <p><?php echo $TaskComment->getComment();?></p=>
+        <p><?php echo (htmlspecialchars($TaskComment->getComment()));?></p=>
         
         <?php } ?>
       </div>
@@ -133,15 +142,16 @@ include_once(__DIR__ . '/classes/User.php');
 
        
       <!---TaskId en listId meegeven met je URL--->
-      <a href="deleteTask.php?taskId=<?php echo $Task->getTaskId();?>&listId=<?php echo $_GET['listId'];?>">Delete</a>
+      <a href="deleteTask.php?taskId=<?php echo $Task->getTaskId();?>&listId=<?php echo $_GET['listId'];?>" class="deleteButton">Delete</a>
      
-      
+      </div>
 
     </div>
     <?php } ?>
 
 
 
+    
   
 <?php else: ?>
 
@@ -151,7 +161,7 @@ include_once(__DIR__ . '/classes/User.php');
 
 
 <div class="fullList">
-<h2>Alle lijsten</h2>
+<h2>All lists</h2>
 <div class="AllList">
 <div class="newList">
 <a href="addlist.php">Add List</a>
@@ -167,19 +177,20 @@ include_once(__DIR__ . '/classes/User.php');
 
       <a href="index.php?listId=<?php echo $ListForUser->getId();?>">
       
-        <h3><?php echo $ListForUser->getTitle();?></h3>
-        <p><?php echo $ListForUser->getDeadline();?></p>
+        <h3><?php echo (htmlspecialchars($ListForUser->getTitle()));?></h3>
+        <p><?php echo (htmlspecialchars($ListForUser->getDeadline()));?></p>
       </a>
-      <p><?php echo $ListForUser->getDescription();?></p>
+      <p><?php echo (htmlspecialchars($ListForUser->getDescription()));?></p>
       
 
       
-
+<div class="deleteList">
       <a href="deleteLists.php?listId=<?php echo $ListForUser->getId();?>">DELETE LIST</a>
+      </div>
       </div>
     </div>
     
-    <?php } ?>>
+    <?php } ?>
 
 <?php endif; ?>
 
