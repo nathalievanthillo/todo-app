@@ -1,10 +1,10 @@
 var doneButtons = document.getElementsByClassName("statusDone");
  
-//als er op button wordt geklikt wordt onderstaande code uitgevoerd
 
-for (let i = 0; i < doneButtons.length; i++) { //alle buttons selecteren en in done button steken 
 
-    doneButtons[i].addEventListener("click", function(e) { //in event listener toevoegen aan elke button
+for (let i = 0; i < doneButtons.length; i++) { 
+
+    doneButtons[i].addEventListener("click", function(e) { 
 
         var taskId = e.path[0].dataset.taskid;
     
