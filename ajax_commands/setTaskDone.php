@@ -9,7 +9,7 @@
         $taskId = $_POST["taskId"]; // post_id
        
           Task::setTaskDone($userId, $taskId);
-          Task::setTaskToDo($userId, $taskId);
+          
 
         $response = [
             "status" => "ok"
