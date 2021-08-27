@@ -56,9 +56,9 @@ include_once(__DIR__ . "/Database.php");
         }
 
         
-        public static function getAllListsByUserId($userId){ //ALLE LIJSTEN OPVRAGEN VAN EEN SPECIFIEKE USER
+        public static function getAllListsByUserId($userId){ 
             $conn = Database::getConnection();
-            $query = $conn->prepare("SELECT id AS Id, user_id AS userId, title, description, deadline FROM lists WHERE user_id = :user");
+            $query = $conn->prepare("SELECT id AS Id, user_id AS userId, title, description, deadline FROM lists WHERE user_id = :user ORDER BY deadline ASC");
 
             $query->execute(['user' => $userId]);
     
@@ -118,7 +118,7 @@ include_once(__DIR__ . "/Database.php");
             
 
         //delete je eigen lijst
-       //delete je eigen lijst
+       
        public static function deleteLists($userId, $listId){
         $conn = Database::getConnection();
         $statement = $conn->prepare("DELETE FROM lists WHERE id = :listsId and user_id = :user");
