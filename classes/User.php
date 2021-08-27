@@ -201,7 +201,7 @@
 
             $statement->bindValue(":id", $user->getUserId());
             $statement->execute();
-            
+
             $result = $statement->fetchAll(\PDO::FETCH_OBJ);
             return $result;
         }
@@ -230,7 +230,28 @@
             if(strpos($username, " ")){
                 throw new Exception("Username cannot contain blank spaces.");
             }
+
+            if($this->usernameExists($username)){
+                throw new Exception("This username is taken.");
+            }
         }
+
+        private function usernameExists($username){ 
+            $conn = Database::getConnection();
+            $statement = $conn->prepare("SELECT id FROM users WHERE username = :username");
+
+            $statement->bindValue(":username", $username);            
+            $statement->execute();
+            $result = $statement->fetch();
+
+            if(!$result){
+                return False;
+            } else {
+                return True;
+            }
+        }
+        
+
 
         public function checkPassword($password){
             if($password == ""){
@@ -252,7 +273,33 @@
             if(!strpos($email, "@") || !strpos($email, ".") || strpos($email, " ") ){
                 throw new Exception("Email is invalid");
         }
+
+        if($this->emailExists($email)){
+            throw new Exception("This email has already been registered.");
+        }
     }
+
+    private function emailExists($email){ 
+        $conn = Database::getConnection();
+        $statement = $conn->prepare("SELECT id FROM users WHERE email = :email");
+
+        $statement->bindValue(":email", $email);            
+        $statement->execute();
+        $result = $statement->fetch();
+
+        if(!$result){
+            return False;
+        } else {
+            //Return false if the result is the users own email
+            if (!empty($this->userId)) {
+                if ($result['id'] == $this->userId) {
+                    return False;
+                }
+            }
+            return True;
+        }
+    }
+
 
     
     
