@@ -3,11 +3,10 @@
     const SETTINGS = [ 
         "db" => [
     
-            "user"      => "root",
-            "password"  => "root",
-            "host"      => "localhost",
-            "port"      => 8889,
-            "dbName"    => "todo-app"
+            "user"      => "ID336919_todoapp",
+            "password"  => "Vanthillo8",
+            "host"      => "ID336919_todoapp.db.webhosting.be",
+            "dbName"    => "ID336919_todoapp"
         ]        
     ];
 
